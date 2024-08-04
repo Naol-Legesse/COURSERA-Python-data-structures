@@ -6,17 +6,33 @@ You can download the sample data at http://www.py4e.com/code3/mbox-short.txt whe
 # Use the file name mbox-short.txt as the file name
 
 
+# 1st method, without using SUM() function
 count=0
 total=0.0
 fname = input("Enter file name: ")
 fh = open(fname)
 for line in fh:
     if not line.startswith("X-DSPAM-Confidence:"):
-        continue
+        continuen
     else:
         count=count+1
         x=line[20:]
         y=float(x)
         total=total+y
-        
 print("Average spam confidence:",total/count)
+
+------------------------------------------------------------------------------
+
+# 2nd method, if we can use the SUM() function
+
+alist=list()
+fname = input("Enter file name: ")
+fh = open(fname)
+for line in fh:
+    if not line.startswith("X-DSPAM-Confidence:"):
+        continue
+    else:
+        x=line[20:]
+        y=float(x)
+        alist.append(y)
+print("Average spam confidence:",sum(alist)/len(alist))
